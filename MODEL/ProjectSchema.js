@@ -16,11 +16,7 @@ const projectSchema = new mongoose.Schema({
         required:true,
         max: 1000,
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
+
 })
 
 

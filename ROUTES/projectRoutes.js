@@ -6,7 +6,7 @@ import { createProject,findAllProject,deleteProject,updateProject } from "../CON
  const projectRoutes = Router()
 
 
- projectRoutes.post('/create', authMiddleware,createProject)
+ projectRoutes.post('/create',createProject)
  projectRoutes.get('/findAll', findAllProject)
  projectRoutes.delete('/delete/:id',authMiddleware, deleteProject)
  projectRoutes.patch('/updated/:id', authMiddleware,updateProject)

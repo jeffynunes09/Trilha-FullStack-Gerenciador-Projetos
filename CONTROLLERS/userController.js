@@ -9,9 +9,10 @@ const create = async (req,res) => {
        const newUser = await User.create({ email, password,name})
  
        const token = generateToken(newUser._id)
+       
        res.json({
         newUser,
-        token
+        token:token
 
         
         
@@ -54,12 +55,14 @@ const loginController = async (req, res) => {
         const token = generateToken(user._id);
 
         // Retorna o usuário e o token
+        
         res.status(200).json({
             user: {
                 id: user._id,
                 email: user.email,
             },
             token
+            
         });
     } catch (error) {
         console.log(error);

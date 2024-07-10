@@ -7,17 +7,17 @@ import Project from "../MODEL/ProjectSchema.js";
 const createProject = async (req,res) => {
 
 const {name ,description} = req.body
- const  user = req.userId 
+ 
  
 try {
-    const project = await Project.create({name,description,user})
+    const project = await Project.create({name,description})
 
     if(project){
         res.status(201).json({
          project: {
             name:project.name,
             description: project.description,
-            user: project.user
+           
          }
            
         })
