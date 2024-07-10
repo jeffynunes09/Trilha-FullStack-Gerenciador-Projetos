@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs'
 
+
 const UserSchema = new  mongoose.Schema({
   name:{
     type: String,
@@ -18,6 +19,11 @@ const UserSchema = new  mongoose.Schema({
         required: true,
         select: true,
       },
+      projects :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "project",
+        
+      }
 
 }) 
 

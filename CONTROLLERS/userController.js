@@ -1,6 +1,7 @@
 import User from "../MODEL/UserSchema.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+
 //CONTROLLER E SERVICE DE CRIAR USUARIO
 const create = async (req,res) => {
     
@@ -23,6 +24,7 @@ const create = async (req,res) => {
     }
 
 }
+
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.SECRET, { expiresIn: '1d' });
@@ -75,7 +77,7 @@ const loginController = async (req, res) => {
 
 //CRIANDO TOKEN
 
-export {create,loginController}
+export {create,loginController,findProjects}
 
 
 

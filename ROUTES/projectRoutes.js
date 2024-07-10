@@ -1,15 +1,15 @@
 import { Router } from "express";
+import { createProject,findAllProject,deleteProject,updateProject, findProjectsByUserId } from "../CONTROLLERS/projectController.js";
 import authMiddleware from "../MIDDLEWARE/authMiddleware.js";
-import { createProject,findAllProject,deleteProject,updateProject } from "../CONTROLLERS/projectController.js";
 
 
  const projectRoutes = Router()
 
 
- projectRoutes.post('/create',createProject)
+ projectRoutes.post('/create',authMiddleware,createProject)
  projectRoutes.get('/findAll', findAllProject)
- projectRoutes.delete('/delete/:id',authMiddleware, deleteProject)
- projectRoutes.patch('/updated/:id', authMiddleware,updateProject)
-
+ projectRoutes.delete('/delete/:id',deleteProject)
+ projectRoutes.patch('/updated/:id',updateProject)
+projectRoutes.get('/myProjects',authMiddleware,findProjectsByUserId)
 
  export default projectRoutes

@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { create, loginController } from "../CONTROLLERS/userController.js";
+import { create, findProjects, loginController } from "../CONTROLLERS/userController.js";
+import authMiddleware from "../MIDDLEWARE/authMiddleware.js";
 
  const userRouter = Router()
 
 
-userRouter.post('/create', create)
+userRouter.post('/create',create)
 userRouter.post('/login', loginController)
+
 
 
 
