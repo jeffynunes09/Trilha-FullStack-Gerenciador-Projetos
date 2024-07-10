@@ -77,7 +77,7 @@ const loginController = async (req, res) => {
 
 //CRIANDO TOKEN
 
-export {create,loginController}
+export {create,loginController,}
 
 
 
