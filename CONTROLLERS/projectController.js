@@ -118,6 +118,5 @@ export {
     findAllProject,
     deleteProject,
     updateProject,
-    findProjectsByUserId,
     findProjectsByUserId
 }
