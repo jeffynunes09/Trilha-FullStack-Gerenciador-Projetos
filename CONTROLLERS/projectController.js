@@ -47,11 +47,25 @@ try{
 
 }
 
+const findProjectsById =  async  (req,res) =>{
 
+  const {id} = req.params 
+  try {
+    const project = await Project.findById(id)
+    if(!project){
+      console.log('Projeto não encontrado')
+    }
+    res.status(201).json({
+      project
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
 
+}
 
-
-async function findProjectsByUserId(req, res) {
+const findProjectsByUserId = async(req, res) =>{
   const id = req.userId;
   try {
     console.log(`Buscando projetos para o usuário ID: ${id}`);
@@ -118,5 +132,7 @@ export {
     findAllProject,
     deleteProject,
     updateProject,
-    findProjectsByUserId
+    findProjectsByUserId,
+    findProjectsById
+    
 }
