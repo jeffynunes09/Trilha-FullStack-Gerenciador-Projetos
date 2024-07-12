@@ -7,10 +7,10 @@ import authMiddleware from "../MIDDLEWARE/authMiddleware.js";
 
 
  projectRoutes.post('/create',authMiddleware,createProject)
- projectRoutes.get('/findAll', findAllProject)
- projectRoutes.get('/findProject/:id', findProjectsById)
- projectRoutes.delete('/delete/:id',deleteProject)
- projectRoutes.put('/updated/:id',updateProject)
+ projectRoutes.get('/findAll',authMiddleware,findAllProject)
+ projectRoutes.get('/findProject/:id',authMiddleware, findProjectsById)
+ projectRoutes.delete('/delete/:id',authMiddleware,deleteProject)
+ projectRoutes.put('/updated/:id',authMiddleware,updateProject)
 projectRoutes.get('/myProjects',authMiddleware,findProjectsByUserId)
 
  export default projectRoutes
