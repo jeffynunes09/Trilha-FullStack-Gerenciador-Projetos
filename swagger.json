@@ -1,17 +1,286 @@
 {
-    "openapi" : "3.0.0",
-    "info" : {
-        "title": "Trilha Codigo certo API Documentation",
-        "description": "Este projeto tem como objetivo desenvolver uma aplicação web completa para gerenciamento de projetos, juntamente com um servidor back-end. A aplicação web permitirá aos usuários listar, cadastrar, editar e excluir projetos, cada um contendo um título e uma descrição."
-
-    },
-    "contact": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Trilha Codigo Certo API Documentation",
+      "description": "Este projeto tem como objetivo desenvolver uma aplicação web completa para gerenciamento de projetos, juntamente com um servidor back-end. A aplicação web permitirá aos usuários listar, cadastrar, editar e excluir projetos, cada um contendo um título e uma descrição.",
+      "contact": {
         "email": "nunesjefferson425@gmail.com"
+      },
+      "version": "1.0.0"
     },
-    "version": "1.0.0",
-    "servers": [],
-    "paths": {},
+    "servers": [
+      {
+        "url": "http://localhost:4000",
+        "description": "Local Server"
+      }
+    ],
+    "paths": {
+      "/user/create": {
+        "post": {
+          "summary": "Criação de novo usuário",
+          "description": "Rota responsável por criar novos usuários",
+          "tags": ["Users"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "Users": {
+                    "value": {
+                      "name": "Jefferson Nunes",
+                      "email": "nunesjefferson425@gmail.com",
+                      "password": "12345678"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Usuário criado com sucesso"
+            },
+            "400": {
+              "description": "Email e senha são obrigatórios"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/user/login": {
+        "post": {
+          "summary": "Autenticação",
+          "description": "Rota responsável por fazer login na aplicação",
+          "tags": ["Users"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "Users": {
+                    "value": {
+                      "email": "nunesjefferson425@gmail.com",
+                      "password": "12345678"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Login bem-sucedido"
+            },
+            "400": {
+              "description": "Email e senha são obrigatórios"
+            },
+            "401": {
+              "description": "Senha incorreta"
+            },
+            "404": {
+              "description": "Usuário não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/projects/create": {
+        "post": {
+          "summary": "Criação de novo projeto",
+          "description": "Rota responsável por criar novos projetos",
+          "tags": ["Projects"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Projects": {
+                    "value": {
+                      "name": "Trilha Codigo Certo",
+                      "description": "Este projeto tem como objetivo desenvolver uma aplicação web completa para gerenciamento de projetos, juntamente com um servidor back-end. A aplicação web permitirá aos usuários listar, cadastrar, editar e excluir projetos, cada um contendo um título e uma descrição.",
+                      "user": "123456567856654988"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Projeto criado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao criar projeto"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/projects/findProject/{id}": {
+        "get": {
+          "summary": "Encontrar Projeto",
+          "description": "Rota responsável por encontrar projeto por ID",
+          "tags": ["Projects"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Projeto encontrado"
+            },
+            "404": {
+              "description": "Projeto não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/projects/myProjects": {
+        "get": {
+          "summary": "Encontrar Projetos por ID do Usuário",
+          "description": "Rota responsável por encontrar todos os projetos por ID do usuário",
+          "tags": ["Projects"],
+          "responses": {
+            "200": {
+              "description": "Lista de projetos do usuário"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/projects/updated/{id}": {
+        "put": {
+          "summary": "Atualizar Projeto",
+          "description": "Rota responsável por atualizar projeto por ID",
+          "tags": ["Projects"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Projects": {
+                    "value": {
+                      "name": "Trilha Codigo Certo",
+                      "description": "Este projeto tem como objetivo desenvolver uma aplicação web completa para gerenciamento de projetos, juntamente com um servidor back-end. A aplicação web permitirá aos usuários listar, cadastrar, editar e excluir projetos, cada um contendo um título e uma descrição.",
+                      "id": "123456567856654988"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Projeto atualizado com sucesso"
+            },
+            "404": {
+              "description": "Projeto não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      },
+      "/projects/delete/{id}": {
+        "delete": {
+          "summary": "Deletar Projeto",
+          "description": "Rota responsável por deletar projeto por ID",
+          "tags": ["Projects"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Projeto deletado com sucesso"
+            },
+            "404": {
+              "description": "Projeto não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    },
     "components": {
-
+      "schemas": {
+        "User": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "Project": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
-}
+  }
+  

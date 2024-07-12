@@ -11,7 +11,7 @@ const create = async (req,res) => {
  
        const token = generateToken(newUser._id)
        
-       res.json({
+       res.status(201).json({
         newUser,
         token:token
 
