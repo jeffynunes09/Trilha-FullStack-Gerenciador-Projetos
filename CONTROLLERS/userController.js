@@ -6,18 +6,31 @@ import bcrypt from 'bcryptjs'
 const create = async (req,res) => {
     
     try {
+    
        const  {email,password,name}= req.body
-       const newUser = await User.create({ email, password,name})
- 
-       const token = generateToken(newUser._id)
+       let user =  await User.findOne({email});
+
+       if(user) {
+        console.log("message : Email já cadastrado!" )
        
-       res.status(201).json({
-        newUser,
-        token:token
+        return res.status(404).json({ message: "Email já cadastrado!" });
 
         
+       }{
+
+        const newUser = await User.create({ email, password,name})
+ 
+        const token = generateToken(newUser._id)
         
-    })
+        res.status(201).json({
+         newUser,
+         token:token
+ 
+         
+         
+     })
+       }
+     
     } catch (error) {
         
         console.log(error)
