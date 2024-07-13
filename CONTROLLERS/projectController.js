@@ -1,8 +1,8 @@
-
+//IMPORTES
 import Project from "../MODEL/ProjectSchema.js";
 
 
-
+// CONTROLLLER E SERVICE CRIACÃO DE PROJETOS
 
 const createProject = async (req, res) => {
     const { name, description } = req.body;
@@ -31,6 +31,8 @@ const createProject = async (req, res) => {
   };
 
 
+// CONTROLLLER E SERVICE ENCONTRAR TODOS OS PROJETOS CRIADOS NA APLICAÇÃO
+
 const findAllProject = async (req,res) => {
 try{
     
@@ -46,7 +48,7 @@ try{
 }
 
 }
-
+// CONTROLLLER E SERVICE  PROEJTOS POR ID 
 const findProjectsById =  async  (req,res) =>{
 
   const {id} = req.params 
@@ -64,7 +66,7 @@ const findProjectsById =  async  (req,res) =>{
   }
 
 }
-
+// CONTROLLLER E SERVICE  PROEJTOS POR ID DO USER LOGADO
 const findProjectsByUserId = async(req, res) =>{
   const id = req.userId;
   try {
@@ -78,8 +80,7 @@ const findProjectsByUserId = async(req, res) =>{
   }
 }
 
-  
-
+  // CONTROLLLER E SERVICE DE DELETAR PROJETOS 
 const deleteProject = async (req,res) => {
 
     try {
@@ -102,7 +103,7 @@ const deleteProject = async (req,res) => {
 }
 
 
-
+// CONTROLLLER E SERVICE  ATUALIZAR PROJETOS
 const updateProject =  async (req, res) => {
             const { name, description} = req.body;
             const { id } = req.params;
@@ -124,7 +125,6 @@ const updateProject =  async (req, res) => {
         
 
    
-
 
 
 export {

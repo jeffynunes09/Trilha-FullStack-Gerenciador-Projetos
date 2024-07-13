@@ -1,6 +1,9 @@
 
+//IMPORTES
 import mongoose from "mongoose";
 
+
+//CONEXAO COM BANCO DE DADOS
 const connectDatabase = () => {
 
 console.log('Wait connecting to the database...')

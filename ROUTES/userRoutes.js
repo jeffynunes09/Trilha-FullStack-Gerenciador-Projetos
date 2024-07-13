@@ -1,11 +1,14 @@
+//IMPORTES
 import { Router } from "express";
 import { create, loginController } from "../CONTROLLERS/userController.js";
-import authMiddleware from "../MIDDLEWARE/authMiddleware.js";
 
- const userRouter = Router()
+//ROUTER DO USER
+const userRouter = Router()
 
-
+// ROTA DE CRIAR USUARIO
 userRouter.post('/create',create)
+
+//ROTA DE LOGIN E AUTENTICAÇÃO DE USUARIO
 userRouter.post('/login', loginController)
 
 

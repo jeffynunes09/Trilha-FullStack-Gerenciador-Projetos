@@ -1,3 +1,4 @@
+//IMPORTES
 import User from "../MODEL/UserSchema.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
@@ -38,7 +39,7 @@ const create = async (req,res) => {
 
 }
 
-
+// GERADOR DE TOKENS
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.SECRET, { expiresIn: '1d' });
 };

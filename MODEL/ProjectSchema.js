@@ -1,5 +1,7 @@
+//IMPORTES
 import mongoose from 'mongoose';
 
+// SCHEMA DO PROJETO
 const projectSchema = new mongoose.Schema({
   name: {
     type: String,

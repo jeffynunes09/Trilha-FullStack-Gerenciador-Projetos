@@ -1,8 +1,8 @@
-
+//IMPORTES
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs'
 
-
+//SCHEMA DO USER
 const UserSchema = new  mongoose.Schema({
   name:{
     type: String,
